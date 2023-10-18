@@ -7,26 +7,27 @@ type Props = {
   };
 };
 
-export async function generateMetaData({ params: { searchTerm } }: Props) {
+export async function generateMetadata({ params: { searchTerm } }: Props) {
   const wikiData: Promise<SearchResult> = getWikiResults(searchTerm);
   const data = await wikiData;
   const displayTerm = searchTerm.replaceAll("%20", " ");
 
   if (!data?.query?.pages) {
     return {
-      title: `${displayTerm} not found`,
+      title: `${displayTerm} Not Found`,
     };
   }
+
   return {
-    title: `${displayTerm}`,
-    description: `Search Results for: ${displayTerm}`,
+    title: displayTerm,
+    description: `Search results for ${displayTerm}`,
   };
 }
 
 export default async function SearchResults({ params: { searchTerm } }: Props) {
   const wikiData: Promise<SearchResult> = getWikiResults(searchTerm);
   const data = await wikiData;
-  const results: Result[] | undefined = data.query?.pages;
+  const results: Result[] | undefined = data?.query?.pages;
 
   const content = (
     <main className="bg-slate-200 mx-auto max-w-lg py-1 min-h-screen">
@@ -35,7 +36,7 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
           return <Item key={result.pageid} result={result} />;
         })
       ) : (
-        <h2 className="p-2 text-xl">{`${searchTerm} not found`}</h2>
+        <h2 className="p-2 text-xl">{`${searchTerm} Not Found`}</h2>
       )}
     </main>
   );
