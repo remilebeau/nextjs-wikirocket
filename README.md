@@ -1,6 +1,6 @@
 # WikiRocket
 
-## A single-page-application that returns the Wikipedia articles matching the given search term.
+A single-page-application that returns the Wikipedia articles matching the given search term.
 
 ## [Click here to launch the app](https://nextjs-wikirocket-black.vercel.app/)
 
