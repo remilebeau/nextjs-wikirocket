@@ -11,3 +11,5 @@ Created using
 - TypeScript
 - React
 - Node.js
+
+Credit to [Dave Gray Teaches Code](https://courses.davegray.codes/) for project idea and tutorial.
